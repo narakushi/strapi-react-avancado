@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_page_section_teches",
+  "info": {
+    "displayName": "sectionTech",
+    "icon": "code"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 45
+    },
+    "techIcons": {
+      "displayName": "techIcons",
+      "type": "component",
+      "repeatable": true,
+      "component": "page.tech-icons"
+    }
+  }
+}

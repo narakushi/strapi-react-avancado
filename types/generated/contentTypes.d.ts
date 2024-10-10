@@ -14,6 +14,11 @@ export interface ApiLandingPageLandingPage extends Struct.SingleTypeSchema {
   attributes: {
     logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     header: Schema.Attribute.Component<'page.header', false>;
+    sectionAboutProject: Schema.Attribute.Component<
+      'page.section-about-project',
+      false
+    >;
+    sectionTech: Schema.Attribute.Component<'page.section-tech', false>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
