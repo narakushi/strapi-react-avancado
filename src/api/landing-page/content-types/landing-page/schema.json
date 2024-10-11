@@ -68,6 +68,20 @@
       "repeatable": false,
       "component": "page.pricing-box",
       "required": true
+    },
+    "sectionAboutUs": {
+      "displayName": "sectionAboutUs",
+      "type": "component",
+      "repeatable": false,
+      "component": "page.section-about-us",
+      "required": true
+    },
+    "sectionReviews": {
+      "displayName": "sectionReviews",
+      "type": "component",
+      "repeatable": false,
+      "component": "page.section-reviews",
+      "required": true
     }
   }
 }

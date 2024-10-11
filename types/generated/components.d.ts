@@ -12,6 +12,22 @@ export interface PageTechIcons extends Struct.ComponentSchema {
   };
 }
 
+export interface PageSocialLinks extends Struct.ComponentSchema {
+  collectionName: 'components_page_social_links';
+  info: {
+    displayName: 'socialLinks';
+    icon: 'oneToMany';
+  };
+  attributes: {
+    title: Schema.Attribute.Enumeration<
+      ['Github', 'Twitter', 'Drbble', 'LinkedIn', 'Facebook']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Twitter'>;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface PageSectionTech extends Struct.ComponentSchema {
   collectionName: 'components_page_section_teches';
   info: {
@@ -31,6 +47,25 @@ export interface PageSectionTech extends Struct.ComponentSchema {
         {
           min: 5;
           max: 10;
+        },
+        number
+      >;
+  };
+}
+
+export interface PageSectionReviews extends Struct.ComponentSchema {
+  collectionName: 'components_page_section_reviews';
+  info: {
+    displayName: 'sectionReviews';
+    icon: 'star';
+  };
+  attributes: {
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    reviews: Schema.Attribute.Component<'page.reviews', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 4;
         },
         number
       >;
@@ -81,6 +116,18 @@ export interface PageSectionAgenda extends Struct.ComponentSchema {
   };
 }
 
+export interface PageSectionAboutUs extends Struct.ComponentSchema {
+  collectionName: 'components_page_section_aboutuses';
+  info: {
+    displayName: 'sectionAboutUs';
+    icon: 'user';
+  };
+  attributes: {
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    authors: Schema.Attribute.Relation<'oneToMany', 'api::author.author'>;
+  };
+}
+
 export interface PageSectionAboutProject extends Struct.ComponentSchema {
   collectionName: 'components_page_section_about_projects';
   info: {
@@ -95,6 +142,19 @@ export interface PageSectionAboutProject extends Struct.ComponentSchema {
         maxLength: 30;
       }>;
     description: Schema.Attribute.Blocks & Schema.Attribute.Required;
+  };
+}
+
+export interface PageReviews extends Struct.ComponentSchema {
+  collectionName: 'components_page_reviews';
+  info: {
+    displayName: 'reviews';
+    icon: 'discuss';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images'>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    text: Schema.Attribute.Text & Schema.Attribute.Required;
   };
 }
 
@@ -199,11 +259,15 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'page.tech-icons': PageTechIcons;
+      'page.social-links': PageSocialLinks;
       'page.section-tech': PageSectionTech;
+      'page.section-reviews': PageSectionReviews;
       'page.section-modules': PageSectionModules;
       'page.section-concepts': PageSectionConcepts;
       'page.section-agenda': PageSectionAgenda;
+      'page.section-about-us': PageSectionAboutUs;
       'page.section-about-project': PageSectionAboutProject;
+      'page.reviews': PageReviews;
       'page.pricing-box': PagePricingBox;
       'page.modules': PageModules;
       'page.itens': PageItens;

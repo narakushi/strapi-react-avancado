@@ -1,53 +1,5 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
-export interface ApiLandingPageLandingPage extends Struct.SingleTypeSchema {
-  collectionName: 'landing_pages';
-  info: {
-    singularName: 'landing-page';
-    pluralName: 'landing-pages';
-    displayName: 'landingPage';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    header: Schema.Attribute.Component<'page.header', false> &
-      Schema.Attribute.Required;
-    sectionAboutProject: Schema.Attribute.Component<
-      'page.section-about-project',
-      false
-    > &
-      Schema.Attribute.Required;
-    sectionTech: Schema.Attribute.Component<'page.section-tech', false> &
-      Schema.Attribute.Required;
-    sectionConcepts: Schema.Attribute.Component<
-      'page.section-concepts',
-      false
-    > &
-      Schema.Attribute.Required;
-    sectionModules: Schema.Attribute.Component<'page.section-modules', false> &
-      Schema.Attribute.Required;
-    sectionAgenda: Schema.Attribute.Component<'page.section-agenda', false> &
-      Schema.Attribute.Required;
-    pricingBox: Schema.Attribute.Component<'page.pricing-box', false> &
-      Schema.Attribute.Required;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::landing-page.landing-page'
-    >;
-  };
-}
-
 export interface PluginUploadFile extends Struct.CollectionTypeSchema {
   collectionName: 'files';
   info: {
@@ -533,6 +485,87 @@ export interface PluginUsersPermissionsUser
   };
 }
 
+export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
+  collectionName: 'authors';
+  info: {
+    singularName: 'author';
+    pluralName: 'authors';
+    displayName: 'author';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    photo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    role: Schema.Attribute.String & Schema.Attribute.Required;
+    socialLinks: Schema.Attribute.Component<'page.social-links', true>;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::author.author'>;
+  };
+}
+
+export interface ApiLandingPageLandingPage extends Struct.SingleTypeSchema {
+  collectionName: 'landing_pages';
+  info: {
+    singularName: 'landing-page';
+    pluralName: 'landing-pages';
+    displayName: 'landingPage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    header: Schema.Attribute.Component<'page.header', false> &
+      Schema.Attribute.Required;
+    sectionAboutProject: Schema.Attribute.Component<
+      'page.section-about-project',
+      false
+    > &
+      Schema.Attribute.Required;
+    sectionTech: Schema.Attribute.Component<'page.section-tech', false> &
+      Schema.Attribute.Required;
+    sectionConcepts: Schema.Attribute.Component<
+      'page.section-concepts',
+      false
+    > &
+      Schema.Attribute.Required;
+    sectionModules: Schema.Attribute.Component<'page.section-modules', false> &
+      Schema.Attribute.Required;
+    sectionAgenda: Schema.Attribute.Component<'page.section-agenda', false> &
+      Schema.Attribute.Required;
+    pricingBox: Schema.Attribute.Component<'page.pricing-box', false> &
+      Schema.Attribute.Required;
+    sectionAboutUs: Schema.Attribute.Component<'page.section-about-us', false> &
+      Schema.Attribute.Required;
+    sectionReviews: Schema.Attribute.Component<'page.section-reviews', false> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::landing-page.landing-page'
+    >;
+  };
+}
+
 export interface AdminPermission extends Struct.CollectionTypeSchema {
   collectionName: 'admin_permissions';
   info: {
@@ -898,7 +931,6 @@ export interface AdminTransferTokenPermission
 declare module '@strapi/strapi' {
   export module Public {
     export interface ContentTypeSchemas {
-      'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
@@ -909,6 +941,8 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::author.author': ApiAuthorAuthor;
+      'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;
