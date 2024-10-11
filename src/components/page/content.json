@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_page_contents",
+  "info": {
+    "displayName": "content",
+    "icon": "stack"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "blocks",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

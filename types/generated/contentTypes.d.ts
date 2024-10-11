@@ -13,12 +13,26 @@ export interface ApiLandingPageLandingPage extends Struct.SingleTypeSchema {
   };
   attributes: {
     logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    header: Schema.Attribute.Component<'page.header', false>;
+    header: Schema.Attribute.Component<'page.header', false> &
+      Schema.Attribute.Required;
     sectionAboutProject: Schema.Attribute.Component<
       'page.section-about-project',
       false
-    >;
-    sectionTech: Schema.Attribute.Component<'page.section-tech', false>;
+    > &
+      Schema.Attribute.Required;
+    sectionTech: Schema.Attribute.Component<'page.section-tech', false> &
+      Schema.Attribute.Required;
+    sectionConcepts: Schema.Attribute.Component<
+      'page.section-concepts',
+      false
+    > &
+      Schema.Attribute.Required;
+    sectionModules: Schema.Attribute.Component<'page.section-modules', false> &
+      Schema.Attribute.Required;
+    sectionAgenda: Schema.Attribute.Component<'page.section-agenda', false> &
+      Schema.Attribute.Required;
+    pricingBox: Schema.Attribute.Component<'page.pricing-box', false> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
