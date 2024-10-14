@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_page_faqs",
+  "info": {
+    "displayName": "faqs",
+    "icon": "message",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "questions": {
+      "type": "string",
+      "required": true
+    },
+    "answers": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}

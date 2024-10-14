@@ -91,6 +91,26 @@ export interface PageSectionModules extends Struct.ComponentSchema {
   };
 }
 
+export interface PageSectionFaq extends Struct.ComponentSchema {
+  collectionName: 'components_page_section_faqs';
+  info: {
+    displayName: 'sectionFaq';
+    icon: 'question';
+    description: '';
+  };
+  attributes: {
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    faqs: Schema.Attribute.Component<'page.faqs', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 2;
+        },
+        number
+      >;
+  };
+}
+
 export interface PageSectionConcepts extends Struct.ComponentSchema {
   collectionName: 'components_page_section_concepts';
   info: {
@@ -215,6 +235,19 @@ export interface PageHeader extends Struct.ComponentSchema {
   };
 }
 
+export interface PageFaqs extends Struct.ComponentSchema {
+  collectionName: 'components_page_faqs';
+  info: {
+    displayName: 'faqs';
+    icon: 'message';
+    description: '';
+  };
+  attributes: {
+    questions: Schema.Attribute.String & Schema.Attribute.Required;
+    answers: Schema.Attribute.Blocks & Schema.Attribute.Required;
+  };
+}
+
 export interface PageContent extends Struct.ComponentSchema {
   collectionName: 'components_page_contents';
   info: {
@@ -263,6 +296,7 @@ declare module '@strapi/strapi' {
       'page.section-tech': PageSectionTech;
       'page.section-reviews': PageSectionReviews;
       'page.section-modules': PageSectionModules;
+      'page.section-faq': PageSectionFaq;
       'page.section-concepts': PageSectionConcepts;
       'page.section-agenda': PageSectionAgenda;
       'page.section-about-us': PageSectionAboutUs;
@@ -272,6 +306,7 @@ declare module '@strapi/strapi' {
       'page.modules': PageModules;
       'page.itens': PageItens;
       'page.header': PageHeader;
+      'page.faqs': PageFaqs;
       'page.content': PageContent;
       'page.concepts': PageConcepts;
       'page.button': PageButton;

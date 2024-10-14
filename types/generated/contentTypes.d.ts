@@ -551,6 +551,8 @@ export interface ApiLandingPageLandingPage extends Struct.SingleTypeSchema {
       Schema.Attribute.Required;
     sectionReviews: Schema.Attribute.Component<'page.section-reviews', false> &
       Schema.Attribute.Required;
+    sectionFaq: Schema.Attribute.Component<'page.section-faq', false> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
